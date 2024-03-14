@@ -1,0 +1,7 @@
+<div class="showTask">
+    <h3>Tasks</h3>
+    <div *ngFor="let t of tasks" class="task-list">
+        <span class="li-item" [ngClass]="{'strikeout': checkBoxVal}">{{t}}</span>
+        <input type="checkbox" class="iptCheckbox" [(ngModel)]="checkBoxVal" (click)="handleCheckBoxOnClick()">
+    </div>
+</div>

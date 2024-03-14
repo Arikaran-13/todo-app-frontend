@@ -1,0 +1,30 @@
+.createTask{
+
+    background-color: rgb(249, 249, 249);
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.ipt{
+    /* background-color: rgb(145, 224, 145); */
+    border: 2px solid rgb(69, 158, 227);
+    border-radius: 10px;
+    height: 7vh;
+    width: 50vh;
+
+}
+
+.btn{
+    height: 7.5vh;
+    width: 12vh;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: lightskyblue;
+    /* font-weight: bold; */
+    font-size: medium;
+}
+
