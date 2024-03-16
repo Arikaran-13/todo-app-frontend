@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
-import { TaskService } from "../service/task.service";
+import { TaskService } from "../../service/task.service";
+import { Task } from "src/models/task";
 
 @Component({
     selector: "create-task",
@@ -12,10 +13,11 @@ export class CreateTaskComponent{
     taskInputText:ElementRef;
 
     constructor(private taskService:TaskService){
-
+      
     }
 
     handleCreateBtnClick(){
-     this.taskService.createTask(this.taskInputText.nativeElement.value);
+        var task = new Task(this.taskInputText.nativeElement.value,"Not completed");
+       this.taskService.createTask(task);
     }
 }

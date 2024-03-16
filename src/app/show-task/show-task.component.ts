@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { TaskService } from "../service/task.service";
+import { TaskService } from "../../service/task.service";
+import { Task } from "src/models/task";
 
 @Component({
     selector: "show-task",
@@ -8,7 +9,7 @@ import { TaskService } from "../service/task.service";
 })
 export class ShowTaskComponent{
      
-    public tasks:string[] =[];
+    public tasks:Task[] =[];
 
     checkBoxVal:boolean=false;
 
@@ -17,7 +18,7 @@ export class ShowTaskComponent{
     }
 
     ngOnInit(){
-        this.tasks = this.taskService.getAllTask();
+        this.tasks = this.taskService.getTodoTasks();
     }
 
     handleCheckBoxOnClick(){

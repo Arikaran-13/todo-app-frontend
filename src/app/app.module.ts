@@ -5,8 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ShowTaskComponent } from './show-task/show-task.component';
-import { TaskService } from './service/task.service';
+import { TaskService } from '../service/task.service';
 import { FormsModule } from '@angular/forms';
+import { TaskApiService } from '../service/task-api.service';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +19,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [TaskService],
+  providers: [TaskService,TaskApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
