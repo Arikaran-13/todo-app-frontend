@@ -1,17 +1,21 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { TaskApiService } from "./task-api.service";
 import { Task } from "src/models/task";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class TaskService{
     
     tasks:Task[]=[];
 
+    public taskCreatedEvent = new EventEmitter<string>();
+
     constructor(private taskApiService:TaskApiService){
 
     }
 
     public createTask(task:Task){
+      console.log(`Task ${task.taskName}`)
       this.taskApiService.createTask(task).subscribe(
         (data:Task)=>{
            console.log("Task created : ",data);
@@ -21,27 +25,21 @@ export class TaskService{
         },
         ()=>{
            console.log("completed");
+           this.emitTaskCreatedEvent(task);
         }
       )
     }
 
-    public getAllTask():void{
-         this.taskApiService.getAllTask().subscribe(
-          (data:Task[])=>{
-            this.tasks = data;
-            console.log(data)
-          },
-          (err)=>{
-            console.log("error occured",err);
-          },
-          ()=>{
-            console.log("completed");
-          }
-        );
+    public emitTaskCreatedEvent(task:Task):void{
+      this.taskCreatedEvent.emit(`Task created: ${task.taskName}`);
     }
 
-    public getTodoTasks():Task[]{
-      return this.tasks;
+
+
+    public getTodoTasks():Observable<Task[]>{
+         return this.taskApiService.getAllTask();
     }
+
+
     
 }

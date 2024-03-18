@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import { Component, ElementRef, EventEmitter, ViewChild } from "@angular/core";
 import { TaskService } from "../../service/task.service";
 import { Task } from "src/models/task";
 
@@ -12,6 +12,8 @@ export class CreateTaskComponent{
     @ViewChild("taskIpt")
     taskInputText:ElementRef;
 
+    
+
     constructor(private taskService:TaskService){
       
     }
@@ -19,5 +21,6 @@ export class CreateTaskComponent{
     handleCreateBtnClick(){
         var task = new Task(this.taskInputText.nativeElement.value,"Not completed");
        this.taskService.createTask(task);
+       
     }
 }

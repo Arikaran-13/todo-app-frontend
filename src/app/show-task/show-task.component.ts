@@ -18,8 +18,26 @@ export class ShowTaskComponent{
     }
 
     ngOnInit(){
-        this.tasks = this.taskService.getTodoTasks();
+        this.loadTask();
     }
+    
+    ngDoCheck(){
+        this.taskService.taskCreatedEvent.subscribe(()=>{
+            console.log("task created");
+            this.loadTask();
+        })
+        
+    }
+    public loadTask():void{
+        this.taskService.getTodoTasks().subscribe(
+            (data:Task[])=>{
+              this.tasks = data;
+            },
+            (err)=>{console.log(err)},
+            ()=>{}
+        )
+    }
+    
 
     handleCheckBoxOnClick(){
         this.checkBoxVal=!this.checkBoxVal;

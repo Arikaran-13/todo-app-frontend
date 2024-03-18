@@ -11,10 +11,12 @@ export class TaskApiService{
     }
 
     public createTask(task:Task):Observable<Task>{
-      return this.http.post<Task>(API_ENDPOINTS.createTask,task);
+      console.log(`Task from api service ${task.taskName}`)
+      return this.http.post<Task>("http://localhost:8081/todo/create",task);
     }
 
     public getAllTask():Observable<Task[]>{
-        return this.http.get<Task[]>(API_ENDPOINTS.getAllTask);
+      
+        return this.http.get<Task[]>("http://localhost:8081/todo/all");
     }
 }
