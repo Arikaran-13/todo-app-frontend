@@ -10,15 +10,13 @@ import { FormsModule } from '@angular/forms';
 import { TaskApiService } from '../service/task-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskStatusComponent } from './task-status/task-status.component';
-import { CheckboxComponent } from './show-task/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateTaskComponent,
     ShowTaskComponent,
-    TaskStatusComponent,
-    CheckboxComponent
+    TaskStatusComponent
   ],
   imports: [
     BrowserModule,
