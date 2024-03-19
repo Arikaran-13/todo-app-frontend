@@ -9,14 +9,12 @@ import { TaskService } from '../service/task.service';
 import { FormsModule } from '@angular/forms';
 import { TaskApiService } from '../service/task-api.service';
 import { HttpClientModule } from '@angular/common/http';
-import { TaskStatusComponent } from './task-status/task-status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateTaskComponent,
-    ShowTaskComponent,
-    TaskStatusComponent
+    ShowTaskComponent
   ],
   imports: [
     BrowserModule,
