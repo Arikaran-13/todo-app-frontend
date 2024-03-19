@@ -16,14 +16,4 @@ export class TaskStatusComponent{
     completedTodo:number;
     notCompltedTodo:number;
 
-    ngDoCheck(){
-        this.updateTodoTaskStatus();
-    }
-
-    public updateTodoTaskStatus(){
-            this.taskService.getTodoTasks()
-            .subscribe((data:Task[])=>{
-               this.notCompltedTodo= data.filter((task)=>task.status=== "Not completed").length
-            })
-    }
 }
